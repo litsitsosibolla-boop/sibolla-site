@@ -1,17 +1,1377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Litsitso Sibolla — Marketing Systems Strategist. I build positioning systems that compound trust and commercial value for ambitious organizations.">
-  <meta property="og:title" content="Litsitso Sibolla — Marketing Systems Strategist">
-  <meta property="og:description" content="Your marketing generates activity. I make it generate revenue.">
-  <meta property="og:type" content="website">
-  <title>Litsitso Sibolla — Marketing Systems Strategist</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Litsitso Sibolla — Marketing Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Karla:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1C1A17;
+  --ink-light:rgba(28,26,23,0.58);
+  --ink-faint:rgba(28,26,23,0.3);
+  --forest:#1A3C2A;
+  --forest-mid:#2a5940;
+  --gold:#B8963E;
+  --gold-warm:#c9a852;
+  --cream:#F7F3EC;
+  --cream-deep:#EDE8DE;
+  --clay:#C4A882;
+  --clay-pale:#f0e8d8;
+  --rule:rgba(28,26,23,0.1);
+  --rule-strong:rgba(28,26,23,0.18);
+  --page-pad:clamp(1.5rem,5vw,4rem);
+}
+html,body{height:100%;overflow:hidden;font-size:16px}
+body{
+  font-family:'Karla',sans-serif;
+  background:var(--cream);color:var(--ink);
+  font-weight:300;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;
+}
+
+/* ── NAV ── */
+nav{
+  position:relative;z-index:50;
+  height:54px;min-height:54px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--page-pad);
+  background:var(--cream);
+  border-bottom:1px solid var(--rule-strong);
+  flex-shrink:0;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:15px;font-weight:500;color:var(--ink);
+  cursor:pointer;letter-spacing:0.01em;
+}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links li button{
+  background:none;border:none;cursor:pointer;
+  font-family:'Karla',sans-serif;font-weight:300;
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink-light);padding:0 1.1rem;height:54px;
+  border-bottom:2px solid transparent;
+  transition:all .2s;
+}
+.nav-links li button:hover{color:var(--ink)}
+.nav-links li button.active{
+  color:var(--forest);border-bottom-color:var(--gold);font-weight:400;
+}
+.nav-cta{
+  background:var(--forest);color:var(--cream);
+  border:none;padding:8px 20px;
+  font-family:'Karla',sans-serif;font-size:11px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:background .2s;
+}
+.nav-cta:hover{background:var(--forest-mid)}
+
+/* ── MAIN ── */
+main{flex:1;overflow:hidden;position:relative}
+
+/* ── PAGE SYSTEM ── */
+.page{
+  position:absolute;inset:0;
+  overflow-y:auto;
+  opacity:0;pointer-events:none;
+  transform:translateY(8px);
+  transition:opacity .35s ease,transform .35s ease;
+}
+.page.active{
+  opacity:1;pointer-events:all;transform:translateY(0);
+}
+
+/* ── SHARED UTILITIES ── */
+.serif{font-family:'Playfair Display',serif}
+.mono{font-family:'EB Garamond',serif;font-style:italic}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--page-pad)}
+
+.s-tag{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+  display:flex;align-items:center;gap:12px;
+}
+.s-tag::after{content:'';width:36px;height:1px;background:rgba(184,150,62,0.4)}
+
+.headline-xl{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,5.5vw,5.5rem);
+  font-weight:400;line-height:1.03;letter-spacing:-0.025em;
+  color:var(--ink);
+}
+.headline-xl em{font-style:italic;color:var(--forest)}
+
+.headline-lg{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3.5vw,3.2rem);
+  font-weight:400;line-height:1.1;
+  color:var(--ink);
+}
+.headline-lg em{font-style:italic;color:var(--forest)}
+
+.body-md{font-size:13.5px;color:var(--ink-light);line-height:1.9}
+.body-sm{font-size:12.5px;color:var(--ink-light);line-height:1.85}
+
+.divider{height:1px;background:var(--rule);margin:2.5rem 0}
+
+/* read-more toggle */
+.rm-trigger{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--forest);cursor:pointer;background:none;border:none;
+  font-family:'Karla',sans-serif;margin-top:0.75rem;
+  transition:color .2s;
+}
+.rm-trigger:hover{color:var(--gold)}
+.rm-trigger .arrow{transition:transform .25s}
+.rm-trigger.open .arrow{transform:rotate(180deg)}
+
+.rm-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease;
+}
+.rm-body.open{max-height:600px}
+.rm-inner{padding-top:1rem}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 26px;font-family:'Karla',sans-serif;
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;border:none;transition:all .2s;font-weight:400;
+}
+.btn-forest{background:var(--forest);color:var(--cream)}
+.btn-forest:hover{background:var(--forest-mid)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-warm)}
+.btn-outline{background:none;border:1px solid var(--rule-strong);color:var(--ink-light)}
+.btn-outline:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+
+/* ===========================
+   PAGE: HOME
+=========================== */
+#pg-home{background:var(--cream)}
+
+.home-hero{
+  min-height:calc(100vh - 54px);
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+
+.home-hero-left{
+  padding:clamp(3rem,8vh,7rem) var(--page-pad);
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:2;
+}
+
+.home-hero-right{
+  background:var(--forest);
+  position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+  padding:3rem 2.5rem;
+}
+
+/* Adire SVG texture */
+.adire-bg{
+  position:absolute;inset:0;opacity:0.12;
+}
+
+.hero-hook{
+  font-size:clamp(1rem,1.5vw,1.1rem);color:var(--ink-faint);
+  font-family:'EB Garamond',serif;font-style:italic;
+  margin-bottom:2rem;
+}
+
+.hero-cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:2.5rem}
+
+.hero-stat-row{
+  display:flex;gap:2.5rem;margin-top:3.5rem;
+  padding-top:2rem;border-top:1px solid var(--rule);
+}
+.h-stat{}
+.h-stat-n{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:400;color:var(--gold);
+  line-height:1;margin-bottom:3px;
+}
+.h-stat-l{font-size:10px;color:var(--ink-faint);letter-spacing:0.08em;text-transform:uppercase}
+
+/* Right panel content */
+.hero-right-quote{position:relative;z-index:2}
+.hero-right-quote blockquote{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.2rem,2vw,1.6rem);
+  color:rgba(249,245,238,0.85);line-height:1.45;
+  margin-bottom:1.25rem;
+}
+.hero-right-quote cite{
+  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-bottom:2rem;
+}
+.mini-cards{display:flex;flex-direction:column;gap:8px}
+.mini-card{
+  background:rgba(249,245,238,0.06);
+  border:1px solid rgba(249,245,238,0.1);
+  padding:12px 16px;
+  display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:background .2s;
+}
+.mini-card:hover{background:rgba(249,245,238,0.1)}
+.mini-card-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+.mini-card-text{
+  font-size:12px;color:rgba(249,245,238,0.65);
+  letter-spacing:0.03em;
+}
+.mini-card-arrow{
+  margin-left:auto;font-size:14px;
+  color:rgba(249,245,238,0.3);
+}
+
+/* ===========================
+   PAGE: ABOUT
+=========================== */
+#pg-about{background:var(--cream)}
+
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;padding:5rem 0;align-items:start;
+}
+.about-left{}
+.about-right{}
+
+.about-portrait{
+  width:100%;aspect-ratio:4/5;
+  background:var(--forest);position:relative;overflow:hidden;
+  margin-bottom:1.5rem;
+}
+.portrait-pattern{
+  position:absolute;inset:0;
+}
+
+.about-caption{
+  font-size:10px;letter-spacing:0.12em;color:var(--ink-faint);
+  text-transform:uppercase;padding-top:0.75rem;
+  border-top:1px solid var(--rule);
+}
+
+.fact-strip{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule-strong);
+  border:1px solid var(--rule-strong);
+  margin-bottom:2.5rem;
+}
+.fact-cell{
+  background:var(--cream);padding:1.25rem 1.5rem;
+}
+.fact-label{font-size:9px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.fact-val{font-size:13.5px;color:var(--ink);font-weight:400}
+
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{
+  display:grid;grid-template-columns:80px 1fr;
+  gap:1rem;padding:1rem 0;
+  border-bottom:1px solid var(--rule);
+}
+.tl-year{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-style:italic;color:var(--gold);
+  padding-top:2px;
+}
+.tl-content{}
+.tl-title{font-size:13px;font-weight:400;color:var(--ink);margin-bottom:3px}
+.tl-desc{font-size:11.5px;color:var(--ink-light);line-height:1.7}
+
+/* ===========================
+   PAGE: PHILOSOPHY
+=========================== */
+#pg-philosophy{background:var(--cream-deep)}
+
+.phil-hero{
+  padding:5rem 0 3rem;
+  border-bottom:1px solid var(--rule-strong);
+  margin-bottom:3rem;
+}
+
+.phil-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--rule-strong);
+  border:1px solid var(--rule-strong);
+  margin-bottom:3rem;
+}
+
+.phil-card{
+  background:var(--cream-deep);padding:2.25rem 1.75rem;
+  position:relative;transition:background .2s;
+}
+.phil-card:hover{background:var(--cream)}
+.phil-num{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:400;font-style:italic;
+  color:rgba(28,26,23,0.07);
+  position:absolute;top:1.25rem;right:1.5rem;
+  line-height:1;
+}
+.phil-icon{
+  width:32px;height:32px;border:1px solid var(--rule-strong);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;font-size:14px;
+}
+.phil-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:400;color:var(--ink);
+  margin-bottom:0.75rem;
+}
+.phil-body{font-size:12.5px;color:var(--ink-light);line-height:1.85}
+
+.manifesto-band{
+  background:var(--forest);padding:3.5rem var(--page-pad);
+  margin:0 calc(-1 * var(--page-pad));
+}
+.manifesto-inner{max-width:1080px;margin:0 auto}
+.manifesto-q{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  font-weight:400;font-style:italic;
+  color:rgba(249,245,238,0.85);line-height:1.4;
+  margin-bottom:2rem;
+}
+.manifesto-lines{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;
+}
+.manifesto-line{
+  font-size:12px;color:rgba(249,245,238,0.5);
+  padding:0.75rem 0;border-top:1px solid rgba(255,255,255,0.07);
+  display:flex;gap:12px;
+}
+.manifesto-line::before{content:'—';color:var(--gold);flex-shrink:0}
+
+/* ===========================
+   PAGE: WORK (results)
+=========================== */
+#pg-work{background:var(--cream)}
+
+.work-hero{padding:5rem 0 2.5rem;border-bottom:1px solid var(--rule-strong);margin-bottom:3rem}
+
+.result-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  background:var(--rule);border:1px solid var(--rule-strong);
+  margin-bottom:3rem;
+}
+.result-card{
+  background:var(--cream);padding:2.25rem 2rem;
+  transition:background .2s;cursor:pointer;
+}
+.result-card:hover{background:var(--clay-pale)}
+.result-card.dark{background:var(--forest)}
+.result-card.dark:hover{background:var(--forest-mid)}
+
+.rc-client{
+  font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+}
+.result-card.dark .rc-client{color:var(--gold-warm)}
+
+.rc-result{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.5rem,2.5vw,2.2rem);
+  font-weight:400;color:var(--ink);line-height:1.1;
+  margin-bottom:0.5rem;
+}
+.result-card.dark .rc-result{color:var(--cream)}
+
+.rc-context{
+  font-size:12px;color:var(--ink-light);line-height:1.75;margin-bottom:1.25rem;
+}
+.result-card.dark .rc-context{color:rgba(249,245,238,0.5)}
+
+.rc-tag{
+  display:inline-block;
+  font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
+  padding:4px 10px;border:1px solid var(--rule-strong);
+  color:var(--ink-faint);
+}
+.result-card.dark .rc-tag{border-color:rgba(255,255,255,0.12);color:rgba(249,245,238,0.3)}
+
+.proof-band{
+  background:var(--ink);padding:2.5rem var(--page-pad);
+  margin:0 calc(-1 * var(--page-pad));
+  display:flex;gap:0;
+}
+.proof-inner{
+  max-width:1080px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,0.05);
+}
+.proof-stat{
+  padding:1.75rem 1.5rem;background:var(--ink);
+}
+.proof-n{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:400;color:var(--gold-warm);
+  line-height:1;margin-bottom:6px;
+}
+.proof-l{font-size:10px;color:rgba(249,245,238,0.35);letter-spacing:0.08em;text-transform:uppercase}
+
+/* ===========================
+   PAGE: SERVICES
+=========================== */
+#pg-services{background:var(--cream)}
+
+.svc-hero{padding:4rem 0 2.5rem;border-bottom:1px solid var(--rule-strong);margin-bottom:2.5rem}
+
+.svc-intro{
+  font-size:1rem;color:var(--ink-light);line-height:1.9;
+  max-width:560px;margin-bottom:1.5rem;
+}
+.svc-intro strong{color:var(--ink)}
+
+/* Tier tabs */
+.tier-tabs{display:flex;gap:0;border:1px solid var(--rule-strong);margin-bottom:2.5rem;width:fit-content}
+.tier-tab{
+  padding:10px 24px;font-size:11px;letter-spacing:0.1em;
+  text-transform:uppercase;cursor:pointer;background:none;border:none;
+  font-family:'Karla',sans-serif;font-weight:300;
+  color:var(--ink-light);border-right:1px solid var(--rule-strong);
+  transition:all .2s;
+}
+.tier-tab:last-child{border-right:none}
+.tier-tab.active{background:var(--forest);color:var(--cream)}
+
+.tier-panel{display:none}
+.tier-panel.active{display:grid;grid-template-columns:1fr 1.1fr;gap:3.5rem;align-items:start}
+
+.tp-info{}
+.tp-pricing-box{
+  background:var(--forest);padding:2.5rem;
+  position:sticky;top:1.5rem;
+}
+
+.tp-name{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:400;color:var(--ink);
+  margin-bottom:0.5rem;
+}
+.tp-hook{
+  font-size:1rem;color:var(--ink-light);margin-bottom:1.5rem;
+  font-family:'EB Garamond',serif;font-style:italic;
+}
+.tp-desc{font-size:13px;color:var(--ink-light);line-height:1.9;margin-bottom:1.5rem}
+
+.tp-includes{list-style:none;margin-bottom:1.5rem}
+.tp-includes li{
+  padding:8px 0;border-bottom:1px solid var(--rule);
+  font-size:12.5px;color:var(--ink-light);
+  display:flex;gap:12px;align-items:flex-start;
+}
+.tp-includes li::before{content:'—';color:var(--clay);flex-shrink:0}
+
+.tp-price{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;color:var(--gold-warm);font-weight:400;
+  line-height:1;margin-bottom:4px;
+}
+.tp-price-note{font-size:10px;color:rgba(249,245,238,0.35);letter-spacing:0.06em;margin-bottom:1.5rem}
+.tp-price-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem}
+.tp-right-title{
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;color:var(--cream);margin-bottom:0.5rem;
+}
+.tp-right-hook{font-size:12px;color:rgba(249,245,238,0.45);line-height:1.75;margin-bottom:1.5rem}
+
+.tp-right-list{list-style:none;margin-bottom:1.5rem}
+.tp-right-list li{
+  padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.07);
+  font-size:12px;color:rgba(249,245,238,0.55);
+  display:flex;gap:10px;
+}
+.tp-right-list li::before{content:'✓';color:var(--gold);flex-shrink:0;font-size:10px;margin-top:3px}
+
+.tp-scarcity{
+  font-size:11px;color:rgba(184,150,62,0.7);
+  margin-bottom:1.25rem;padding:10px 14px;
+  border:1px solid rgba(184,150,62,0.2);
+  display:flex;align-items:center;gap:10px;
+}
+.tp-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--gold);animation:pulse 2s infinite;flex-shrink:0;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ===========================
+   PAGE: CONTACT
+=========================== */
+#pg-contact{background:var(--cream-deep)}
+
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;
+  gap:5rem;padding:5rem 0;align-items:start;
+}
+
+.contact-lede{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.5rem);
+  font-weight:400;line-height:1.2;color:var(--ink);
+  margin-bottom:1rem;
+}
+.contact-lede em{font-style:italic;color:var(--forest)}
+
+.contact-sub{font-size:13px;color:var(--ink-light);line-height:1.9;margin-bottom:2rem}
+
+.reach-items{display:flex;flex-direction:column;gap:0}
+.reach-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 0;border-bottom:1px solid var(--rule);
+}
+.reach-icon{
+  width:36px;height:36px;border:1px solid var(--rule-strong);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;color:var(--ink-light);
+}
+.reach-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px}
+.reach-val{font-size:13px;color:var(--ink)}
+
+.contact-form{
+  background:white;border:1px solid var(--rule-strong);
+  padding:2.5rem;
+}
+.cf-title{
+  font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;
+  color:var(--ink);margin-bottom:1.5rem;
+  padding-bottom:1rem;border-bottom:1px solid var(--rule);
+}
+.form-g{display:flex;flex-direction:column;gap:5px;margin-bottom:1.1rem}
+.form-l{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint)}
+.form-c{
+  border:1px solid var(--rule-strong);padding:9px 13px;
+  font-size:12.5px;font-family:'Karla',sans-serif;
+  color:var(--ink);background:var(--cream);
+  outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none;
+}
+.form-c:focus{border-color:var(--forest)}
+select.form-c{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%231C1A17' opacity='.3' d='M5 6L0 0h10z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer;
+}
+textarea.form-c{min-height:100px;resize:vertical}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+.form-success{display:none;text-align:center;padding:2rem 0}
+.form-success.show{display:block}
+.success-check{
+  width:48px;height:48px;border:1px solid var(--forest);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--forest);font-size:20px;margin:0 auto 1rem;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.site-footer{
+  height:42px;min-height:42px;flex-shrink:0;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--page-pad);
+  border-top:1px solid rgba(184,150,62,0.1);
+}
+.sf-left{font-size:11px;color:rgba(249,245,238,0.3);letter-spacing:0.04em}
+.sf-right{font-size:10px;color:var(--gold);letter-spacing:0.1em}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media(max-width:760px){
+  nav ul{display:none}
+  .home-hero,.about-grid,.contact-grid,.tier-panel.active,.manifesto-lines,.result-grid,.phil-grid,.proof-inner{
+    grid-template-columns:1fr;
+  }
+  .home-hero-right{display:none}
+  .proof-inner{grid-template-columns:1fr 1fr}
+}
+</style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="goTo('home')">Litsitso Sibolla<span>.</span></div>
+  <ul class="nav-links">
+    <li><button onclick="goTo('home')" id="tab-home" class="active">Home</button></li>
+    <li><button onclick="goTo('about')" id="tab-about">About</button></li>
+    <li><button onclick="goTo('philosophy')" id="tab-philosophy">Philosophy</button></li>
+    <li><button onclick="goTo('work')" id="tab-work">Results</button></li>
+    <li><button onclick="goTo('services')" id="tab-services">Services</button></li>
+    <li><button onclick="goTo('contact')" id="tab-contact">Contact</button></li>
+  </ul>
+  <button class="nav-cta" onclick="goTo('contact')">Work Together →</button>
+</nav>
+
+<main>
+
+<!-- ======================== HOME ======================== -->
+<div class="page active" id="pg-home">
+  <div class="home-hero">
+    <div class="home-hero-left">
+      <div class="wrap">
+        <div class="s-tag">Marketing Strategist · Maseru, Lesotho</div>
+        <h1 class="headline-xl" style="margin-bottom:1.5rem">
+          You don't<br>have a content<br>problem.
+        </h1>
+        <p class="hero-hook">You have a system problem. And that's fixable.</p>
+        <p class="body-md" style="max-width:480px;margin-bottom:0">
+          Most businesses in Lesotho are spending money on marketing that entertains people but doesn't bring them customers. I fix that. Not with more posts — with the right architecture.
+        </p>
+
+        <button class="rm-trigger" onclick="toggleRM(this,'hm-more')">
+          What does that actually mean? <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="hm-more">
+          <div class="rm-inner">
+            <p class="body-sm" style="max-width:460px">
+              A marketing system is the logic that moves a stranger — someone who has never heard of your business — all the way to paying you. It's not just about posting on Facebook. It's about <strong>what happens next</strong> after they see your page. Most businesses are missing 3–4 of those steps. I find them, fix them, and build the ones that are missing.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-cta-row">
+          <button class="btn btn-forest" onclick="goTo('services')">See What I Offer →</button>
+          <button class="btn btn-outline" onclick="goTo('work')">See Real Results</button>
+        </div>
+
+        <div class="hero-stat-row">
+          <div class="h-stat">
+            <div class="h-stat-n">2M+</div>
+            <div class="h-stat-l">Facebook views · 0 paid</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n">44%</div>
+            <div class="h-stat-l">Audience growth · LEC</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n">+248%</div>
+            <div class="h-stat-l">Web traffic · Abidors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-hero-right">
+      <!-- Adire pattern background -->
+      <div class="adire-bg" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="ap" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="60" y2="60" stroke="rgba(249,245,238,1)" stroke-width="0.4"/>
+              <line x1="60" y1="0" x2="0" y2="60" stroke="rgba(249,245,238,1)" stroke-width="0.4"/>
+              <circle cx="30" cy="30" r="2.5" fill="none" stroke="rgba(249,245,238,0.8)" stroke-width="0.4"/>
+              <rect x="15" y="15" width="30" height="30" fill="none" stroke="rgba(184,150,62,0.6)" stroke-width="0.3"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#ap)"/>
+          <circle cx="50%" cy="40%" r="200" fill="none" stroke="rgba(184,150,62,0.15)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="hero-right-quote">
+        <blockquote>"The businesses that will dominate the next decade in Lesotho aren't the ones with the biggest budgets — they're the ones with the best systems."</blockquote>
+        <cite>— Litsitso Sibolla</cite>
+        <div class="mini-cards">
+          <div class="mini-card" onclick="goTo('about')">
+            <div class="mini-card-dot"></div>
+            <div class="mini-card-text">Who is Litsitso?</div>
+            <div class="mini-card-arrow">→</div>
+          </div>
+          <div class="mini-card" onclick="goTo('philosophy')">
+            <div class="mini-card-dot"></div>
+            <div class="mini-card-text">How does he think about marketing?</div>
+            <div class="mini-card-arrow">→</div>
+          </div>
+          <div class="mini-card" onclick="goTo('work')">
+            <div class="mini-card-dot"></div>
+            <div class="mini-card-text">What results has he delivered?</div>
+            <div class="mini-card-arrow">→</div>
+          </div>
+          <div class="mini-card" onclick="goTo('services')">
+            <div class="mini-card-dot"></div>
+            <div class="mini-card-text">What does working together look like?</div>
+            <div class="mini-card-arrow">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== ABOUT ======================== -->
+<div class="page" id="pg-about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-portrait">
+          <div class="portrait-pattern">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="pp" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <line x1="0" y1="20" x2="40" y2="20" stroke="rgba(184,150,62,0.12)" stroke-width="0.5"/>
+                  <line x1="20" y1="0" x2="20" y2="40" stroke="rgba(249,245,238,0.06)" stroke-width="0.5"/>
+                  <circle cx="20" cy="20" r="2" fill="rgba(184,150,62,0.08)"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#pp)"/>
+              <!-- Stylised silhouette placeholder -->
+              <text x="50%" y="65%" text-anchor="middle" font-family="Playfair Display, serif" font-size="72" fill="rgba(249,245,238,0.06)" font-style="italic">LS</text>
+              <text x="50%" y="80%" text-anchor="middle" font-family="Karla, sans-serif" font-size="10" fill="rgba(249,245,238,0.2)" letter-spacing="4">PHOTO COMING</text>
+            </svg>
+          </div>
+        </div>
+        <div class="about-caption">Litsitso Sibolla · Maseru, Lesotho · 2025</div>
+
+        <div style="margin-top:2rem">
+          <div class="fact-strip">
+            <div class="fact-cell">
+              <div class="fact-label">Based in</div>
+              <div class="fact-val">Maseru, Lesotho</div>
+            </div>
+            <div class="fact-cell">
+              <div class="fact-label">Specialty</div>
+              <div class="fact-val">Revenue Systems</div>
+            </div>
+            <div class="fact-cell">
+              <div class="fact-label">Languages</div>
+              <div class="fact-val">English · Sesotho</div>
+            </div>
+            <div class="fact-cell">
+              <div class="fact-label">Years active</div>
+              <div class="fact-val">Since 2020</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <div class="s-tag">The person behind the strategy</div>
+        <h2 class="headline-lg" style="margin-bottom:1.25rem">
+          I turned M0<br>into <em>2 million views.</em><br>Without spending a cent.
+        </h2>
+        <p class="body-md" style="margin-bottom:0.75rem">
+          That wasn't luck. It was a system. And that system is what I now build for businesses across Lesotho and southern Africa.
+        </p>
+        <p class="body-md" style="margin-bottom:0">
+          I'm a marketing strategist — not a content creator, not a social media manager. I design the architecture that makes your marketing actually work.
+        </p>
+
+        <button class="rm-trigger" onclick="toggleRM(this,'ab-more1')">
+          My full story <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="ab-more1">
+          <div class="rm-inner">
+            <p class="body-sm" style="margin-bottom:1rem">
+              I started in digital marketing building audiences from scratch — growing LEC Lesotho from 36,000 to 52,000 followers (44% growth), delivering +248% web traffic for Abidors, and helping Kofi Khafetsa go from 0 to 7,000 followers. Then I did something that changed everything: I ran a campaign for Prof. Nqosa Mahao with no budget, and generated over 2 million Facebook views in 60 days.
+            </p>
+            <p class="body-sm" style="margin-bottom:0">
+              That result — organic, zero paid media — made me understand that strategy beats budget every time, when you actually understand how people in this market make decisions. I now apply that understanding to every client I work with.
+            </p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="s-tag">Where I've worked</div>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">Now</div>
+            <div class="tl-content">
+              <div class="tl-title">Cross Channel Content Specialist — LNIG Hollard</div>
+              <div class="tl-desc">Leading brand content and Sesotho-language marketing strategy for one of Lesotho's leading insurers.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2025</div>
+            <div class="tl-content">
+              <div class="tl-title">Social Media Strategist — Prof. Nqosa Mahao</div>
+              <div class="tl-desc">Delivered 2M+ organic views in 60 days for a national public figure. Zero paid media.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2022–25</div>
+            <div class="tl-content">
+              <div class="tl-title">Founder — Bold Digital Agency</div>
+              <div class="tl-desc">Built and ran a full-service digital agency. Clients included LEC, Abidors, Maluti Neurodiagnostics, and Adv. Mary Bosiu.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2023</div>
+            <div class="tl-content">
+              <div class="tl-title">Co-founder — Transform Lesotho Initiative</div>
+              <div class="tl-desc">Built diplomatic partnerships with EU, US Embassy, and French Embassy Lesotho.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== PHILOSOPHY ======================== -->
+<div class="page" id="pg-philosophy">
+  <div class="wrap">
+    <div class="phil-hero">
+      <div class="s-tag">How I think</div>
+      <h2 class="headline-lg" style="margin-bottom:1rem;max-width:620px">
+        Marketing isn't about being seen.<br>It's about being <em>chosen.</em>
+      </h2>
+      <p class="body-md" style="max-width:540px;margin-bottom:0">
+        Big following. Pretty posts. Lots of activity. But the phone isn't ringing. If that's your business right now, the problem isn't your design or your captions. It's the logic underneath everything.
+      </p>
+      <button class="rm-trigger" onclick="toggleRM(this,'ph-more')">
+        Why most marketing advice fails African businesses <span class="arrow">↓</span>
+      </button>
+      <div class="rm-body" id="ph-more">
+        <div class="rm-inner">
+          <p class="body-sm" style="max-width:560px">
+            Most of the marketing playbooks that exist were written for markets where institutional trust is high — where people trust banks, brands, and systems by default. In Lesotho, trust works differently. It's built through people, through community, through consistency over time. Businesses that try to copy Western marketing tactics without adapting for this reality burn budget and wonder what went wrong. I build for how our people actually make decisions.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="phil-grid">
+      <div class="phil-card">
+        <div class="phil-num">01</div>
+        <div class="phil-icon">⚙</div>
+        <div class="phil-title">Systems over content</div>
+        <p class="phil-body">Content without a system behind it is just entertainment. The system is what converts attention into customers — and it has to be built deliberately.</p>
+        <button class="rm-trigger" onclick="toggleRM(this,'ph1-more')" style="margin-top:0.75rem">
+          Read more <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="ph1-more">
+          <div class="rm-inner">
+            <p class="phil-body">A content system maps the journey from "stranger who just saw your ad" to "paid customer." It includes trust-building touchpoints, a clear offer structure, a reason to act now, and a follow-up mechanism. Without this, even viral content produces nothing lasting.</p>
+          </div>
+        </div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-num">02</div>
+        <div class="phil-icon">🌍</div>
+        <div class="phil-title">Africa-first, not Africa-last</div>
+        <p class="phil-body">The best marketing strategy for a business in Maseru is not the same one that works in Manchester. The psychology is different. The trust architecture is different.</p>
+        <button class="rm-trigger" onclick="toggleRM(this,'ph2-more')" style="margin-top:0.75rem">
+          Read more <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="ph2-more">
+          <div class="rm-inner">
+            <p class="phil-body">This means building content that acknowledges local values, using Sesotho where it deepens connection, understanding that WhatsApp is infrastructure not a backup channel, and recognising that community validation drives decisions more than brand polish here.</p>
+          </div>
+        </div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-num">03</div>
+        <div class="phil-icon">📈</div>
+        <div class="phil-title">Revenue, not vanity</div>
+        <p class="phil-body">Likes, followers, reach — these are inputs, not outcomes. The only number that matters at the end of the month is revenue. I design toward that number.</p>
+        <button class="rm-trigger" onclick="toggleRM(this,'ph3-more')" style="margin-top:0.75rem">
+          Read more <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="ph3-more">
+          <div class="rm-inner">
+            <p class="phil-body">Every piece of strategy I build is measured against one question: does this move someone closer to paying? That doesn't mean every post is a sales pitch — it means every piece of content has a role in the larger system that ends in a sale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="manifesto-band">
+    <div class="manifesto-inner">
+      <div class="s-tag" style="color:var(--gold)">The Sibolla Way</div>
+      <div class="manifesto-q">"Most businesses already have everything they need. They just haven't built the bridge between what they do and what the customer wants to feel."</div>
+      <div class="manifesto-lines">
+        <div class="manifesto-line">Attention is a starting point, not an achievement</div>
+        <div class="manifesto-line">Every customer has a question before they buy — answer it first</div>
+        <div class="manifesto-line">Consistency compounds where campaigns expire</div>
+        <div class="manifesto-line">The best marketing sounds like the customer's own thoughts</div>
+        <div class="manifesto-line">Price signals belief — undercharging destroys trust</div>
+        <div class="manifesto-line">Your content should work while you sleep</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== WORK ======================== -->
+<div class="page" id="pg-work">
+  <div class="wrap">
+    <div class="work-hero">
+      <div class="s-tag">Results, not promises</div>
+      <h2 class="headline-lg" style="margin-bottom:1rem;max-width:580px">
+        Real businesses.<br>Real numbers.<br><em>Zero fluff.</em>
+      </h2>
+      <p class="body-md" style="max-width:480px">
+        The results below are documented and verifiable. No simulated case studies. No "client name withheld." These are businesses in Lesotho and southern Africa that gave me the brief and got something they could bank.
+      </p>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-card dark">
+        <div class="rc-client">Prof. Nqosa Mahao · Public Figure</div>
+        <div class="rc-result">2,000,000+<br>Facebook views</div>
+        <div class="rc-context">Organic reach. Zero paid media. 60 days. One strategist.</div>
+        <button class="rm-trigger" style="color:rgba(184,150,62,0.8);margin-bottom:1rem" onclick="toggleRM(this,'w1-more')">
+          How it was done <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="w1-more">
+          <div class="rm-inner">
+            <p style="font-size:12px;color:rgba(249,245,238,0.5);line-height:1.85">Built a content rotation system — Takes, Curiosity posts, Commentary, Nostalgia — designed specifically for Lesotho's Facebook-dominant audience. Each post served a function in a larger conversion system. The biggest single post reached 132,933 views and 11,095 engagements, with 94.3% coming from non-followers.</p>
+          </div>
+        </div>
+        <div class="rc-tag">Organic Social · Strategy</div>
+      </div>
+
+      <div class="result-card">
+        <div class="rc-client">LEC Lesotho · Utility Company</div>
+        <div class="rc-result">+44% audience<br>growth</div>
+        <div class="rc-context">36,000 → 52,000 followers. Sustained growth with consistent brand voice.</div>
+        <button class="rm-trigger" onclick="toggleRM(this,'w2-more')" style="margin-bottom:1rem">
+          What drove it <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="w2-more">
+          <div class="rm-inner">
+            <p class="body-sm">Repositioned LEC's social presence from corporate announcements to community-relevant content. Built editorial calendar aligned with Sesotho cultural moments. Result: consistent growth and dramatically higher engagement rates.</p>
+          </div>
+        </div>
+        <div class="rc-tag">Brand Management · Content</div>
+      </div>
+
+      <div class="result-card">
+        <div class="rc-client">Abidors · Commercial Business</div>
+        <div class="rc-result">+248%<br>web traffic</div>
+        <div class="rc-context">Content-led SEO and social strategy that drove measurable traffic growth.</div>
+        <button class="rm-trigger" onclick="toggleRM(this,'w3-more')" style="margin-bottom:1rem">
+          The approach <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="w3-more">
+          <div class="rm-inner">
+            <p class="body-sm">Integrated social content with a website content strategy. Built keyword-informed blog content and drove traffic through social channels. Paired with +171% engagement growth on social media simultaneously.</p>
+          </div>
+        </div>
+        <div class="rc-tag">Digital Strategy · SEO</div>
+      </div>
+
+      <div class="result-card">
+        <div class="rc-client">Kofi Khafetsa · Personal Brand</div>
+        <div class="rc-result">0 → 7,000<br>followers</div>
+        <div class="rc-context">Brand-new account. Built from nothing with a positioning-first approach.</div>
+        <button class="rm-trigger" onclick="toggleRM(this,'w4-more')" style="margin-bottom:1rem">
+          The strategy <span class="arrow">↓</span>
+        </button>
+        <div class="rm-body" id="w4-more">
+          <div class="rm-inner">
+            <p class="body-sm">Defined the personal brand positioning before any content went live. Built an audience by being the most useful and specific account in a niche — not by posting more, but by posting with clearer purpose and sharper framing.</p>
+          </div>
+        </div>
+        <div class="rc-tag">Personal Brand · Positioning</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proof-band">
+    <div class="proof-inner">
+      <div class="proof-stat">
+        <div class="proof-n">2M+</div>
+        <div class="proof-l">Organic Facebook views</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-n">150+</div>
+        <div class="proof-l">Published articles</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-n">44%</div>
+        <div class="proof-l">Audience growth · LEC</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-n">Zero</div>
+        <div class="proof-l">Paid media for any organic result</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SERVICES ======================== -->
+<div class="page" id="pg-services">
+  <div class="wrap">
+    <div class="svc-hero">
+      <div class="s-tag">How we work together</div>
+      <h2 class="headline-lg" style="margin-bottom:1rem">
+        Three ways in.<br><em>One outcome.</em>
+      </h2>
+      <p class="svc-intro">
+        Whether you need something done this week or a full marketing partner for the long run — there's a starting point for you. <strong>Not sure where to begin?</strong> Start at the bottom. The Pressure Test is M750 and tells you exactly what needs fixing.
+      </p>
+    </div>
+
+    <div class="tier-tabs">
+      <button class="tier-tab active" onclick="switchTier(this,'t-quick')">Quick Start</button>
+      <button class="tier-tab" onclick="switchTier(this,'t-retainer')">Monthly</button>
+      <button class="tier-tab" onclick="switchTier(this,'t-custom')">Custom</button>
+    </div>
+
+    <!-- QUICK START -->
+    <div class="tier-panel active" id="t-quick">
+      <div class="tp-info">
+        <div class="tp-name">Quick Start</div>
+        <div class="tp-hook">"I need something sorted now."</div>
+        <p class="tp-desc">A single, clear deliverable. You pay, I deliver, you have what you need. No long-term commitment. No complicated proposals. Just a clean transaction with a fixed outcome.</p>
+
+        <div class="s-tag" style="margin-top:1.5rem">Three options</div>
+
+        <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:1.5rem">
+          <div style="padding:1.25rem;border:1px solid var(--rule-strong);background:var(--cream)">
+            <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Most popular starting point</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:4px">Brand Pressure Test — M1,500</div>
+            <p class="body-sm">You get a written diagnosis of the 3 things most likely killing your marketing. Delivered in 48 hours. No jargon, no slides. Just the truth about what's broken and what to fix first.</p>
+            <button class="rm-trigger" onclick="toggleRM(this,'qs1-more')">What exactly is included <span class="arrow">↓</span></button>
+            <div class="rm-body" id="qs1-more">
+              <div class="rm-inner">
+                <ul class="tp-includes" style="margin-bottom:0">
+                  <li>Full review of your social media, website, and messaging</li>
+                  <li>Top 3 conversion blockers, named clearly (not hidden in jargon)</li>
+                  <li>One immediate action per blocker — things you can do this week</li>
+                  <li>Written report. Delivered to your inbox in 48 hours.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div style="padding:1.25rem;border:1px solid var(--rule-strong)">
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:4px">30-Day Content System — M4,500</div>
+            <p class="body-sm">A full month of content — planned, written, structured, and ready to post. Your team executes; I build the engine.</p>
+            <button class="rm-trigger" onclick="toggleRM(this,'qs2-more')">What's included <span class="arrow">↓</span></button>
+            <div class="rm-body" id="qs2-more">
+              <div class="rm-inner">
+                <ul class="tp-includes" style="margin-bottom:0">
+                  <li>30 complete post scripts (caption, hook, format guidance)</li>
+                  <li>Hook library — 10 proven opening lines per format</li>
+                  <li>Content rotation plan (what type of post and when)</li>
+                  <li>One revision round included</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div style="padding:1.25rem;border:1px solid var(--rule-strong)">
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:4px">Marketing Blueprint — M18,500</div>
+            <p class="body-sm">The full picture. Audit, positioning, 90-day roadmap, 2 strategy calls, 30 days of support. This is for businesses ready to treat marketing as infrastructure.</p>
+            <button class="rm-trigger" onclick="toggleRM(this,'qs3-more')">Full scope <span class="arrow">↓</span></button>
+            <div class="rm-body" id="qs3-more">
+              <div class="rm-inner">
+                <ul class="tp-includes" style="margin-bottom:0">
+                  <li>Deep audit across all digital touchpoints</li>
+                  <li>Buyer psychology and trust map</li>
+                  <li>Written brand positioning framework</li>
+                  <li>90-day execution roadmap (first 4 weeks in full detail)</li>
+                  <li>Content system + hook library</li>
+                  <li>2 strategy calls</li>
+                  <li>30-day WhatsApp support</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-forest" onclick="goTo('contact')">Get Started — Contact Me →</button>
+      </div>
+
+      <div class="tp-pricing-box">
+        <div class="tp-price-label">Where most people start</div>
+        <div class="tp-right-title">The Brand Pressure Test</div>
+        <div class="tp-price">M1,500</div>
+        <div class="tp-price-note">Delivered in 48 hours · No contract</div>
+        <div class="tp-right-hook">Think of it as a doctor's appointment for your marketing. You come in, I diagnose, you leave knowing exactly what to fix. No jargon. No padding. Just clarity.</div>
+        <ul class="tp-right-list">
+          <li>Written. Delivered to your inbox.</li>
+          <li>3 clear blockers identified</li>
+          <li>3 immediate actions to take</li>
+          <li>No long-term commitment needed</li>
+        </ul>
+        <div class="tp-scarcity">
+          <div class="tp-dot"></div>
+          Limited to 4 Pressure Tests per month — to ensure quality
+        </div>
+        <button class="btn btn-gold" style="width:100%" onclick="goTo('contact')">Book Yours →</button>
+      </div>
+    </div>
+
+    <!-- MONTHLY -->
+    <div class="tier-panel" id="t-retainer">
+      <div class="tp-info">
+        <div class="tp-name">Monthly Retainer</div>
+        <div class="tp-hook">"I want ongoing strategy, not one-off fixes."</div>
+        <p class="tp-desc">A continuous working relationship. Strategy and direction every month, with execution support built in. Marketing that compounds because someone is thinking about it consistently.</p>
+        <div class="s-tag" style="margin-top:1.5rem">Three tiers</div>
+
+        <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:1.5rem">
+          <div style="padding:1.25rem;border:1px solid var(--rule-strong)">
+            <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Ignite</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:4px">Foundation — M9,500/month</div>
+            <p class="body-sm">Monthly strategy session, 12 posts per month, brand voice maintenance, performance report. For businesses building consistency.</p>
+          </div>
+          <div style="padding:1.25rem;border:1px solid var(--forest);background:rgba(26,60,42,0.03)">
+            <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Architect · Most Chosen</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:4px">Full System — M20,000/month</div>
+            <p class="body-sm">2 strategy calls, 24 posts, email campaigns, ad copy, weekly updates. Full marketing management as a service.</p>
+          </div>
+          <div style="padding:1.25rem;border:1px solid var(--rule-strong)">
+            <div style="font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Command</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:4px">Partnership — M45,000/month</div>
+            <p class="body-sm">Fractional CMO. I function as your Head of Marketing — setting direction, managing your team, leading execution. 6-month minimum.</p>
+          </div>
+        </div>
+
+        <p class="body-sm" style="margin-bottom:1.25rem">All retainers require a short application. I work with a small number of clients at once — intentionally.</p>
+        <button class="btn btn-forest" onclick="goTo('contact')">Apply for a Retainer →</button>
+      </div>
+
+      <div class="tp-pricing-box">
+        <div class="tp-price-label">Most popular</div>
+        <div class="tp-right-title">Architect — Full System</div>
+        <div class="tp-price">M20,000</div>
+        <div class="tp-price-note">Per month · 3-month minimum · Billed in advance</div>
+        <div class="tp-right-hook">This is what professional marketing management actually looks like. Strategy and execution in one relationship — not two separate conversations.</div>
+        <ul class="tp-right-list">
+          <li>2 strategy calls per month</li>
+          <li>24 posts per month, fully written</li>
+          <li>Email campaigns (2/month)</li>
+          <li>Ad copy & campaign oversight</li>
+          <li>Weekly performance updates</li>
+          <li>Priority WhatsApp access (24hr response)</li>
+        </ul>
+        <div class="tp-scarcity">
+          <div class="tp-dot"></div>
+          Maximum 3 Architect clients at any time
+        </div>
+        <button class="btn btn-gold" style="width:100%" onclick="goTo('contact')">Apply Now →</button>
+      </div>
+    </div>
+
+    <!-- CUSTOM -->
+    <div class="tier-panel" id="t-custom">
+      <div class="tp-info">
+        <div class="tp-name">Custom Scope</div>
+        <div class="tp-hook">"My situation doesn't fit a box."</div>
+        <p class="tp-desc">Not every brief is standard. Launch campaigns, event marketing, crisis communication, bilingual content, executive personal brand — if it involves marketing and revenue, let's talk about what it needs.</p>
+        <ul class="tp-includes" style="margin-top:1.5rem">
+          <li>Tell me your goal and your deadline</li>
+          <li>I'll come back with a clear scope and fixed price</li>
+          <li>No vague estimates — you know what you're paying before you commit</li>
+          <li>Response within 48 hours</li>
+          <li>Bilingual (English + Sesotho) available for all custom work</li>
+        </ul>
+        <p class="body-sm" style="margin-top:1.5rem;border-left:2px solid var(--gold);padding-left:1rem">
+          Some of the most impactful work I've done started with a message that said "I don't know if this is something you do, but..." — send it anyway.
+        </p>
+        <button class="btn btn-forest" style="margin-top:1.5rem" onclick="goTo('contact')">Start the Conversation →</button>
+      </div>
+
+      <div class="tp-pricing-box">
+        <div class="tp-price-label">Custom investment</div>
+        <div class="tp-right-title">Built around your brief</div>
+        <div class="tp-price" style="font-size:1.8rem">Proposal in 48hrs</div>
+        <div class="tp-price-note">Fixed price · No surprises</div>
+        <div class="tp-right-hook">Every custom project starts with a 30-minute call where I ask enough questions to build a scope that actually fits your situation.</div>
+        <ul class="tp-right-list">
+          <li>Launch campaigns</li>
+          <li>Event marketing</li>
+          <li>Bilingual Sesotho content</li>
+          <li>Executive personal brand</li>
+          <li>Crisis communication</li>
+          <li>Radio scripts</li>
+          <li>Staff marketing training</li>
+          <li>OOH campaign concepts</li>
+        </ul>
+        <button class="btn btn-gold" style="width:100%" onclick="goTo('contact')">Get a Custom Proposal →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================== CONTACT ======================== -->
+<div class="page" id="pg-contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="s-tag">Let's talk</div>
+        <h2 class="contact-lede">
+          The first conversation<br>costs <em>nothing.</em><br>Not moving costs<br>everything.
+        </h2>
+        <p class="contact-sub">
+          Fill in the form. I'll read it personally and respond within 48 hours — whether we're a fit or not. Either way, you hear back.
+        </p>
+
+        <div class="reach-items">
+          <div class="reach-item">
+            <div class="reach-icon">✉</div>
+            <div>
+              <div class="reach-label">Email</div>
+              <div class="reach-val">hello@litsitsosibolla.com</div>
+            </div>
+          </div>
+          <div class="reach-item">
+            <div class="reach-icon">📱</div>
+            <div>
+              <div class="reach-label">WhatsApp</div>
+              <div class="reach-val">+266 — available on request</div>
+            </div>
+          </div>
+          <div class="reach-item">
+            <div class="reach-icon">📍</div>
+            <div>
+              <div class="reach-label">Based in</div>
+              <div class="reach-val">Maseru, Lesotho · Serving southern Africa</div>
+            </div>
+          </div>
+          <div class="reach-item">
+            <div class="reach-icon">⏱</div>
+            <div>
+              <div class="reach-label">Response time</div>
+              <div class="reach-val">Within 48 hours — always</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;padding:1.25rem;background:var(--clay-pale);border-left:2px solid var(--clay)">
+          <p class="body-sm">
+            <strong style="color:var(--ink)">Not ready to commit?</strong> Start with the Brand Pressure Test (M1,500). You get a written diagnosis of what's holding your marketing back — no obligation, no follow-up sales call. Just clarity.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <div class="contact-form" id="cf-wrap">
+          <div class="cf-title" id="cf-title">Get in touch</div>
+
+          <div id="cf-form" style="display:flex;flex-direction:column;gap:0">
+            <div class="form-row-2" style="margin-bottom:1.1rem">
+              <div class="form-g">
+                <label class="form-l">Your name *</label>
+                <input type="text" class="form-c" id="cf-name" placeholder="Full name">
+              </div>
+              <div class="form-g">
+                <label class="form-l">Business / Role</label>
+                <input type="text" class="form-c" id="cf-org" placeholder="Where you work">
+              </div>
+            </div>
+            <div class="form-row-2" style="margin-bottom:1.1rem">
+              <div class="form-g">
+                <label class="form-l">Email *</label>
+                <input type="email" class="form-c" id="cf-email" placeholder="your@email.com">
+              </div>
+              <div class="form-g">
+                <label class="form-l">WhatsApp</label>
+                <input type="tel" class="form-c" id="cf-phone" placeholder="+266 ...">
+              </div>
+            </div>
+            <div class="form-g" style="margin-bottom:1.1rem">
+              <label class="form-l">What do you need help with? *</label>
+              <select class="form-c" id="cf-service">
+                <option value="">Choose a starting point...</option>
+                <option>Brand Pressure Test (M1,500) — Let's start here</option>
+                <option>30-Day Content System (M4,500)</option>
+                <option>Marketing Blueprint (M18,500)</option>
+                <option>Monthly Retainer — IGNITE (M9,500)</option>
+                <option>Monthly Retainer — ARCHITECT (M20,000)</option>
+                <option>Monthly Retainer — COMMAND (M45,000)</option>
+                <option>Custom project — I'll explain below</option>
+                <option>Just exploring — not sure yet</option>
+              </select>
+            </div>
+            <div class="form-g" style="margin-bottom:1.1rem">
+              <label class="form-l">What's going on with your marketing right now? *</label>
+              <textarea class="form-c" id="cf-msg" placeholder="Don't overthink it. Just tell me what's frustrating you, what you're trying to achieve, or what you've already tried."></textarea>
+            </div>
+            <div class="form-g" style="margin-bottom:1.5rem">
+              <label class="form-l">Budget range (optional)</label>
+              <select class="form-c" id="cf-budget">
+                <option value="">Prefer not to say</option>
+                <option>Under M5,000</option>
+                <option>M5,000 – M15,000</option>
+                <option>M15,000 – M30,000</option>
+                <option>M30,000+</option>
+              </select>
+            </div>
+            <button class="btn btn-gold" style="width:100%;padding:14px;justify-content:center" onclick="submitContact()">Send Message →</button>
+            <p style="font-size:10.5px;color:var(--ink-faint);margin-top:1rem;line-height:1.7">I read every message personally. You'll receive a response within 48 hours regardless of whether we're a fit.</p>
+          </div>
+
+          <div class="form-success" id="cf-success">
+            <div class="success-check">✓</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ink);margin-bottom:0.5rem">Message received.</div>
+            <p id="cf-success-msg" style="font-size:13px;color:var(--ink-light);line-height:1.85;max-width:320px;margin:0 auto"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="sf-left">© 2025 Litsitso Sibolla · Maseru, Lesotho</div>
+  <div class="sf-right">Attention → Revenue</div>
+</footer>
+
+<script>
+// ── PAGE ROUTING ──
+const pages = ['home','about','philosophy','work','services','contact'];
+let current = 'home';
+
+function goTo(id) {
+  document.getElementById('pg-' + current).classList.remove('active');
+  document.getElementById('tab-' + current)?.classList.remove('active');
+  current = id;
+  document.getElementById('pg-' + id).classList.add('active');
+  document.getElementById('tab-' + id)?.classList.add('active');
+  // scroll to top of new page
+  document.getElementById('pg-' + id).scrollTop = 0;
+}
+
+// ── READ MORE ──
+function toggleRM(btn, id) {
+  const body = document.getElementById(id);
+  const isOpen = body.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.querySelector('.arrow').textContent = isOpen ? '↑' : '↓';
+}
+
+// ── TIER TABS ──
+function switchTier(btn, panelId) {
+  document.querySelectorAll('.tier-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tier-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+// ── CONTACT FORM ──
+function submitContact() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const service = document.getElementById('cf-service').value;
+  const msg = document.getElementById('cf-msg').value.trim();
+  if (!name || !email || !msg) {
+    alert('Please fill in your name, email, and message — those are the essentials.');
+    return;
+  }
+  document.getElementById('cf-form').style.display = 'none';
+  document.getElementById('cf-success-msg').textContent =
+    `Thank you, ${name}. Your message is in. I will respond to ${email} within 48 hours.${service ? ' I will look at your interest in ' + service + ' specifically.' : ''}`;
+  document.getElementById('cf-success').classList.add('show');
+}
+</script>
 </body>
 </html>

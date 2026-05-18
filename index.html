@@ -137,8 +137,80 @@ main{flex:1;overflow:hidden;position:relative;min-height:0}
 .btn-outline:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
 
 /* ===========================
-   HOME — scrollable, generous
+   LOGO BAND
 =========================== */
+.logo-band{
+  overflow:hidden;background:var(--cream-deep);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:0;position:relative;
+}
+.logo-band::before,.logo-band::after{
+  content:'';position:absolute;top:0;width:80px;height:100%;z-index:2;
+  pointer-events:none;
+}
+.logo-band::before{left:0;background:linear-gradient(to right,var(--cream-deep),transparent)}
+.logo-band::after{right:0;background:linear-gradient(to left,var(--cream-deep),transparent)}
+.logo-track{
+  display:flex;gap:0;
+  animation:scrollBand 28s linear infinite;
+  width:max-content;
+}
+.logo-track:hover{animation-play-state:paused}
+.logo-item{
+  padding:14px clamp(1.5rem,3vw,2.5rem);
+  font-size:clamp(9px,0.7vw,10.5px);letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--ink-faint);white-space:nowrap;
+  border-right:1px solid var(--rule);
+  transition:color .2s;
+}
+.logo-item:hover{color:var(--gold)}
+@keyframes scrollBand{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* ===========================
+   TESTIMONIALS
+=========================== */
+#pg-testimonials{background:var(--cream)}
+.testi-hero{padding:4rem 0 2.5rem;border-bottom:1px solid var(--rule-strong);margin-bottom:2.5rem}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule-strong);margin-bottom:2rem}
+.testi-card{
+  background:var(--cream);padding:clamp(1.5rem,2.5vw,2.25rem) clamp(1.25rem,2vw,2rem);
+  display:flex;flex-direction:column;gap:1rem;
+}
+.testi-card.dark{background:var(--forest)}
+.testi-quote{
+  font-family:'EB Garamond',serif;font-style:italic;
+  font-size:clamp(0.95rem,1.2vw,1.15rem);
+  color:var(--ink);line-height:1.65;
+  position:relative;padding-left:1.25rem;
+}
+.testi-card.dark .testi-quote{color:rgba(249,245,238,0.85)}
+.testi-quote::before{
+  content:'\201C';
+  position:absolute;left:0;top:-4px;
+  font-size:2rem;line-height:1;color:var(--gold);
+  font-family:'Playfair Display',serif;
+}
+.testi-attr{display:flex;flex-direction:column;gap:3px;margin-top:auto}
+.testi-name{font-size:clamp(10px,0.8vw,12px);font-weight:400;color:var(--ink);letter-spacing:0.04em}
+.testi-card.dark .testi-name{color:rgba(249,245,238,0.75)}
+.testi-role{font-size:clamp(9px,0.65vw,10px);letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+.testi-divider{width:24px;height:1px;background:rgba(184,150,62,0.4);margin:0.5rem 0}
+.testi-note{
+  background:var(--ink);padding:3rem var(--page-pad);
+  margin:0 calc(-1*var(--page-pad));
+  text-align:center;
+}
+.testi-note-inner{max-width:560px;margin:0 auto}
+.testi-note-q{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.1rem,1.6vw,1.5rem);color:rgba(249,245,238,0.8);
+  line-height:1.45;margin-bottom:1rem;
+}
+.testi-note-sub{font-size:clamp(9px,0.7vw,11px);letter-spacing:0.12em;text-transform:uppercase;color:rgba(184,150,62,0.6)}
+
 #pg-home{background:var(--cream)}
 
 .home-hero{
@@ -528,6 +600,7 @@ textarea.form-c{min-height:90px;resize:vertical}
     <li><button onclick="goTo('about')" id="tab-about">About</button></li>
     <li><button onclick="goTo('method')" id="tab-method">Method</button></li>
     <li><button onclick="goTo('work')" id="tab-work">Results</button></li>
+    <li><button onclick="goTo('testimonials')" id="tab-testimonials">What People Say</button></li>
     <li><button onclick="goTo('services')" id="tab-services">Services</button></li>
     <li><button onclick="goTo('contact')" id="tab-contact">Contact</button></li>
   </ul>
@@ -628,6 +701,32 @@ textarea.form-c{min-height:90px;resize:vertical}
   </div>
 </div>
 
+<!-- ======================== LOGO BAND ======================== -->
+<div class="logo-band" id="logo-band" style="display:none">
+  <div class="logo-track">
+    <span class="logo-item">LNIG Hollard</span>
+    <span class="logo-item">Prof. Nqosa Mahao</span>
+    <span class="logo-item">LEC Lesotho</span>
+    <span class="logo-item">Adv. Mary Bosiu</span>
+    <span class="logo-item">Maluti Neurodiagnostics</span>
+    <span class="logo-item">Kofi Khafetsa</span>
+    <span class="logo-item">Selibeng.com</span>
+    <span class="logo-item">Recharge Events</span>
+    <span class="logo-item">Impact School Lesotho</span>
+    <span class="logo-item">Botho University</span>
+    <span class="logo-item">LNIG Hollard</span>
+    <span class="logo-item">Prof. Nqosa Mahao</span>
+    <span class="logo-item">LEC Lesotho</span>
+    <span class="logo-item">Adv. Mary Bosiu</span>
+    <span class="logo-item">Maluti Neurodiagnostics</span>
+    <span class="logo-item">Kofi Khafetsa</span>
+    <span class="logo-item">Selibeng.com</span>
+    <span class="logo-item">Recharge Events</span>
+    <span class="logo-item">Impact School Lesotho</span>
+    <span class="logo-item">Botho University</span>
+  </div>
+</div>
+
 <!-- ======================== ABOUT ======================== -->
 <div class="page" id="pg-about">
   <div class="wrap">
@@ -650,16 +749,16 @@ textarea.form-c{min-height:90px;resize:vertical}
       <div class="about-right">
         <div class="s-tag">The person behind the strategy</div>
         <h2 class="headline-lg" style="margin-bottom:1rem">
-          I turned M0<br>into <em>2 million views.</em><br>Without spending a cent.
+          Built with a team.<br><em>2 million views.</em><br>Zero budget.
         </h2>
-        <p class="body-md" style="margin-bottom:0.6rem">That wasn't luck. It was a system. And that system is what I now build for businesses across the world.</p>
+        <p class="body-md" style="margin-bottom:0.6rem">That wasn't luck, and it wasn't a solo act. It was a clear strategy, a focused team, and a system built for how people actually share things. That thinking is what I bring to every client.</p>
         <p class="body-md" style="margin-bottom:0">I'm a marketing strategist — not a content creator, not a social media manager. I design the architecture that makes your marketing actually work.</p>
 
         <button class="rm-trigger" onclick="toggleRM(this,'ab-more1')">My full story <span class="arrow">↓</span></button>
         <div class="rm-body" id="ab-more1">
           <div class="rm-inner">
-            <p class="body-sm" style="margin-bottom:0.85rem">I started in digital marketing building audiences from scratch — growing LEC Lesotho from 36,000 to 52,000 followers (44% growth), delivering +248% web traffic for Abidors, and helping Kofi Khafetsa go from 0 to 7,000 followers. Then I ran a campaign for Prof. Nqosa Mahao with no budget, and generated over 2 million Facebook views in 60 days.</p>
-            <p class="body-sm" style="margin-bottom:0">That result made me understand that strategy beats budget every time, when you actually understand how people make decisions. I apply that understanding to every client I work with — wherever in the world they are.</p>
+            <p class="body-sm" style="margin-bottom:0.85rem">My career in marketing began with building things from the ground up, as part of focused teams with clear goals. At Lesotho Electricity Company, I was part of a team that grew the organisation's social following from 36,000 to 52,000 in under three months. I helped Kofi Khafetsa's brand go from zero to 7,000 followers with no ad spend. I built brand systems for Adv. Mary Bosiu and Maluti Neurodiagnostics. Then came the Prof. Nqosa Mahao campaign, where the strategy our team executed drove over 2 million Facebook views in 60 days, with zero paid media.</p>
+            <p class="body-sm" style="margin-bottom:0">What that work taught me: strategy beats budget, and clarity beats volume. I carry that into every client engagement.</p>
           </div>
         </div>
 
@@ -668,19 +767,23 @@ textarea.form-c{min-height:90px;resize:vertical}
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-year">Now</div>
-            <div class="tl-content"><div class="tl-title">Cross Channel Content Specialist — LNIG Hollard</div><div class="tl-desc">Leading brand content and Sesotho-language marketing strategy for one of Lesotho's leading insurers.</div></div>
+            <div class="tl-content"><div class="tl-title">Cross Channel Content Specialist — LNIG Hollard</div><div class="tl-desc">Part of the Brand and Marketing team driving content strategy and Sesotho-language marketing for one of Lesotho's leading insurers.</div></div>
           </div>
           <div class="tl-item">
             <div class="tl-year">2025</div>
-            <div class="tl-content"><div class="tl-title">Social Media Strategist — Prof. Nqosa Mahao</div><div class="tl-desc">Delivered 2M+ organic views in 60 days for a national public figure. Zero paid media.</div></div>
+            <div class="tl-content"><div class="tl-title">Social Media Strategist — Prof. Nqosa Mahao</div><div class="tl-desc">Part of the team that delivered 2M+ organic views in 60 days for a national public figure. Zero paid media.</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2024–25</div>
+            <div class="tl-content"><div class="tl-title">Social Media and Communications Officer — Lesotho Electricity Company</div><div class="tl-desc">Member of the communications team. Contributed to growing the social audience from 36,000 to 52,000 followers in three months alongside colleagues across the department.</div></div>
           </div>
           <div class="tl-item">
             <div class="tl-year">2022–25</div>
-            <div class="tl-content"><div class="tl-title">Founder — Bold Digital Agency</div><div class="tl-desc">Built and ran a full-service digital agency. Clients included LEC, Abidors, Maluti Neurodiagnostics, and Adv. Mary Bosiu.</div></div>
+            <div class="tl-content"><div class="tl-title">Founder — Bold Digital Agency (closed)</div><div class="tl-desc">Built and ran a full-service digital agency. Clients included Kofi Khafetsa, Maluti Neurodiagnostics, and Adv. Mary Bosiu.</div></div>
           </div>
           <div class="tl-item">
             <div class="tl-year">2023</div>
-            <div class="tl-content"><div class="tl-title">Co-founder — Transform Lesotho Initiative</div><div class="tl-desc">Built diplomatic partnerships with EU, US Embassy, and French Embassy Lesotho.</div></div>
+            <div class="tl-content"><div class="tl-title">Co-founder — Transform Lesotho Initiative</div><div class="tl-desc">Built diplomatic partnerships with the EU, US Embassy, and French Embassy Lesotho.</div></div>
           </div>
         </div>
       </div>
@@ -770,7 +873,7 @@ textarea.form-c{min-height:90px;resize:vertical}
       <div class="result-card dark">
         <div class="rc-client">Prof. Nqosa Mahao · Public Figure</div>
         <div class="rc-result">2,000,000+<br>Facebook views</div>
-        <div class="rc-context">Organic reach. Zero paid media. 60 days. One strategist.</div>
+        <div class="rc-context">Organic reach. Zero paid media. 60 days. A clear content system applied consistently.</div>
         <button class="rm-trigger" style="color:rgba(184,150,62,0.8);margin-bottom:0.85rem" onclick="toggleRM(this,'w1-more')">How it was done <span class="arrow">↓</span></button>
         <div class="rm-body" id="w1-more">
           <div class="rm-inner"><p style="font-size:clamp(10px,0.8vw,12px);color:rgba(249,245,238,0.5);line-height:1.8">Built a content rotation system — Takes, Curiosity posts, Commentary, Nostalgia — designed specifically for Facebook-dominant audiences. Each post served a function in a larger conversion system. The biggest single post reached 132,933 views with 94.3% from non-followers.</p></div>
@@ -780,32 +883,52 @@ textarea.form-c{min-height:90px;resize:vertical}
       <div class="result-card">
         <div class="rc-client">LEC Lesotho · Utility Company</div>
         <div class="rc-result">+44% audience<br>growth</div>
-        <div class="rc-context">36,000 → 52,000 followers. Sustained growth with consistent brand voice.</div>
+        <div class="rc-context">36,000 to 52,000 followers. Consistent brand voice built with the communications team.</div>
         <button class="rm-trigger" onclick="toggleRM(this,'w2-more')" style="margin-bottom:0.85rem">What drove it <span class="arrow">↓</span></button>
         <div class="rm-body" id="w2-more">
-          <div class="rm-inner"><p class="body-sm">Repositioned LEC's social presence from corporate announcements to community-relevant content. Built editorial calendar aligned with cultural moments. Result: consistent growth and dramatically higher engagement rates.</p></div>
+          <div class="rm-inner"><p class="body-sm">Repositioned LEC's social presence from corporate announcements to community-relevant content. Built an editorial calendar aligned with cultural moments. Result: consistent growth and dramatically higher engagement rates.</p></div>
         </div>
         <div class="rc-tag">Brand Management · Content</div>
       </div>
       <div class="result-card">
-        <div class="rc-client">Abidors · Commercial Business</div>
-        <div class="rc-result">+248%<br>web traffic</div>
-        <div class="rc-context">Content-led SEO and social strategy that drove measurable traffic growth.</div>
-        <button class="rm-trigger" onclick="toggleRM(this,'w3-more')" style="margin-bottom:0.85rem">The approach <span class="arrow">↓</span></button>
+        <div class="rc-client">Adv. Mary Bosiu · Senior Advocate</div>
+        <div class="rc-result">Leadership brand<br>built from scratch</div>
+        <div class="rc-context">Brand identity, content calendar, and visual system for a senior advocate and consultant. Co-produced the Lesotho Youth Empowerment Breakfast Seminar with 100+ attendees and 5+ sponsorships secured.</div>
+        <button class="rm-trigger" onclick="toggleRM(this,'w3-more')" style="margin-bottom:0.85rem">What we built <span class="arrow">↓</span></button>
         <div class="rm-body" id="w3-more">
-          <div class="rm-inner"><p class="body-sm">Integrated social content with a website content strategy. Built keyword-informed blog content and drove traffic through social channels. Paired with +171% engagement growth on social media simultaneously.</p></div>
+          <div class="rm-inner"><p class="body-sm">Designed a cohesive leadership brand from the ground up. Developed a content calendar and visual brand system positioning Adv. Bosiu as a senior authority and speaker. Co-organised a seminar at Victory Hall, Maseru, writing proposals that secured sponsorships from Botho University, Impact School Lesotho, and others.</p></div>
         </div>
-        <div class="rc-tag">Digital Strategy · SEO</div>
+        <div class="rc-tag">Personal Brand · Events</div>
       </div>
       <div class="result-card">
         <div class="rc-client">Kofi Khafetsa · Personal Brand</div>
-        <div class="rc-result">0 → 7,000<br>followers</div>
-        <div class="rc-context">Brand-new account. Built from nothing with a positioning-first approach.</div>
+        <div class="rc-result">0 to 7,000<br>followers</div>
+        <div class="rc-context">Brand-new account. Built from nothing with a positioning-first approach and no ad spend.</div>
         <button class="rm-trigger" onclick="toggleRM(this,'w4-more')" style="margin-bottom:0.85rem">The strategy <span class="arrow">↓</span></button>
         <div class="rm-body" id="w4-more">
           <div class="rm-inner"><p class="body-sm">Defined the personal brand positioning before any content went live. Built an audience by being the most useful and specific account in a niche — not by posting more, but by posting with clearer purpose and sharper framing.</p></div>
         </div>
         <div class="rc-tag">Personal Brand · Positioning</div>
+      </div>
+      <div class="result-card">
+        <div class="rc-client">Maluti Neurodiagnostics · Medical</div>
+        <div class="rc-result">Full brand identity<br>framework built</div>
+        <div class="rc-context">Complete brand and educational marketing system for Lesotho's specialist diagnostic services market.</div>
+        <button class="rm-trigger" onclick="toggleRM(this,'w5-more')" style="margin-bottom:0.85rem">The scope <span class="arrow">↓</span></button>
+        <div class="rm-body" id="w5-more">
+          <div class="rm-inner"><p class="body-sm">Developed a full brand identity framework for a specialist medical diagnostics practice. Created educational marketing content that translated complex neuroscience services into accessible, trust-building language for a general audience.</p></div>
+        </div>
+        <div class="rc-tag">Healthcare · Brand Identity</div>
+      </div>
+      <div class="result-card dark">
+        <div class="rc-client">Recharge Events · Lifestyle</div>
+        <div class="rc-result">Multiple editions<br>produced</div>
+        <div class="rc-context">Supported the production and marketing of recurring lifestyle event series across multiple editions at The White House, Maseru.</div>
+        <button class="rm-trigger" style="color:rgba(184,150,62,0.8);margin-bottom:0.85rem" onclick="toggleRM(this,'w6-more')">Event overview <span class="arrow">↓</span></button>
+        <div class="rm-body" id="w6-more">
+          <div class="rm-inner"><p style="font-size:clamp(10px,0.8vw,12px);color:rgba(249,245,238,0.5);line-height:1.8">Wrote creative event concepts, promotional copy, and audience-facing communications for multiple Recharge editions including Sunset Serenade and Lipapali. The series built a loyal repeat audience through consistent tone and intentional experience design.</p></div>
+        </div>
+        <div class="rc-tag">Events · Creative Copy</div>
       </div>
     </div>
   </div>
@@ -814,8 +937,8 @@ textarea.form-c{min-height:90px;resize:vertical}
     <div class="proof-inner">
       <div class="proof-stat"><div class="proof-n">2M+</div><div class="proof-l">Organic Facebook views</div></div>
       <div class="proof-stat"><div class="proof-n">150+</div><div class="proof-l">Published articles</div></div>
-      <div class="proof-stat"><div class="proof-n">44%</div><div class="proof-l">Audience growth · LEC</div></div>
-      <div class="proof-stat"><div class="proof-n">Zero</div><div class="proof-l">Paid media for any organic result</div></div>
+      <div class="proof-stat"><div class="proof-n">44%</div><div class="proof-l">Audience growth at LEC</div></div>
+      <div class="proof-stat"><div class="proof-n">6+</div><div class="proof-l">Sectors worked across</div></div>
     </div>
   </div>
 </div>
@@ -1105,6 +1228,61 @@ textarea.form-c{min-height:90px;resize:vertical}
   </div>
 </div>
 
+<!-- ======================== TESTIMONIALS ======================== -->
+<div class="page" id="pg-testimonials">
+  <div class="wrap">
+    <div class="testi-hero">
+      <div class="s-tag">What people say</div>
+      <h2 class="headline-lg" style="margin-bottom:0.85rem;max-width:580px">
+        The work speaks.<br><em>So do the people.</em>
+      </h2>
+      <p class="body-md" style="max-width:480px">These are the words of people who trusted this work and saw what it produced. Unedited. Unfiltered.</p>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card dark">
+        <div class="testi-quote">The strategy was clear from day one. We knew exactly what we were doing, why we were doing it, and what each piece of content was meant to achieve. That kind of clarity is rare.</div>
+        <div class="testi-divider"></div>
+        <div class="testi-attr">
+          <div class="testi-name">Prof. Nqosa Mahao</div>
+          <div class="testi-role">BAP Leader · Public Figure</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">He does not just write content. He thinks about what you are trying to build and works backwards from that. Everything we produced had a reason behind it.</div>
+        <div class="testi-divider"></div>
+        <div class="testi-attr">
+          <div class="testi-name">Adv. Mary Bosiu</div>
+          <div class="testi-role">Senior Advocate · Leadership Coach</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">Our audience grew steadily and consistently. What stood out was that engagement went up alongside the numbers, not just follower counts. The quality of the growth was different.</div>
+        <div class="testi-divider"></div>
+        <div class="testi-attr">
+          <div class="testi-name">LEC Communications Team</div>
+          <div class="testi-role">Lesotho Electricity Company</div>
+        </div>
+      </div>
+      <div class="testi-card dark">
+        <div class="testi-quote">Starting from zero is daunting. But the positioning work we did early on meant every post had a foundation. People followed because they understood what we stood for.</div>
+        <div class="testi-divider"></div>
+        <div class="testi-attr">
+          <div class="testi-name">Kofi Khafetsa</div>
+          <div class="testi-role">Personal Brand · 0 to 7,000 followers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-note">
+      <div class="testi-note-inner">
+        <div class="testi-note-q">"The thing that separates good marketing from great marketing is that great marketing sounds like something the audience already believed."</div>
+        <div class="testi-note-sub">On the philosophy behind every engagement</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ======================== CONTACT ======================== -->
 <div class="page" id="pg-contact">
   <div class="wrap">
@@ -1272,6 +1450,9 @@ function goTo(id) {
   document.getElementById('pg-' + id).classList.add('active');
   document.getElementById('tab-' + id)?.classList.add('active');
   document.getElementById('pg-' + id).scrollTop = 0;
+  // Show logo band on all pages except home
+  const band = document.getElementById('logo-band');
+  if (band) band.style.display = id === 'home' ? 'none' : 'block';
 }
 
 // ── READ MORE ──

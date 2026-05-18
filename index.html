@@ -587,7 +587,51 @@ textarea.form-c{min-height:90px;resize:vertical}
   .home-hero,.about-grid,.contact-grid,.tier-panel.active,.manifesto-lines,.result-grid,.phil-grid,.proof-inner{grid-template-columns:1fr}
   .home-hero-right{display:none}
   .proof-inner{grid-template-columns:1fr 1fr}
+  .testi-grid,[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  .mob-menu-btn{display:block}
+  nav{box-shadow:none;border-bottom:1px solid var(--rule-strong)}
+  .page{background:var(--cream)}
+  main::before,main::after,body::before,body::after{display:none!important}
 }
+.mob-menu-btn{
+  display:none;background:none;border:none;cursor:pointer;
+  padding:6px;color:var(--ink);font-size:18px;line-height:1;
+}
+.mob-drawer{
+  position:fixed;inset:0;z-index:200;pointer-events:none;
+}
+.mob-drawer-bg{
+  position:absolute;inset:0;background:rgba(28,26,23,0.55);
+  opacity:0;transition:opacity .25s;
+}
+.mob-drawer-panel{
+  position:absolute;top:0;right:0;width:220px;height:100%;
+  background:var(--cream);border-left:1px solid var(--rule-strong);
+  transform:translateX(100%);transition:transform .28s ease;
+  display:flex;flex-direction:column;padding:1.5rem 0;
+}
+.mob-drawer.open{pointer-events:all}
+.mob-drawer.open .mob-drawer-bg{opacity:1}
+.mob-drawer.open .mob-drawer-panel{transform:translateX(0)}
+.mob-drawer-close{
+  align-self:flex-end;margin-right:1.25rem;margin-bottom:1rem;
+  background:none;border:none;cursor:pointer;font-size:20px;color:var(--ink-light);
+}
+.mob-nav-item{
+  padding:0.85rem 1.75rem;
+  font-family:'Karla',sans-serif;font-size:clamp(11px,0.9vw,13px);
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);
+  cursor:pointer;border:none;background:none;text-align:left;
+  border-bottom:1px solid var(--rule);transition:color .15s;
+}
+.mob-nav-item:hover{color:var(--ink)}
+@media(max-width:860px){
+  .mob-menu-btn{display:block}
+  nav{box-shadow:none;border-bottom:1px solid var(--rule-strong)}
+  .page{background:var(--cream)}
+  main::before,main::after,body::before,body::after{display:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -600,12 +644,26 @@ textarea.form-c{min-height:90px;resize:vertical}
     <li><button onclick="goTo('about')" id="tab-about">About</button></li>
     <li><button onclick="goTo('method')" id="tab-method">Method</button></li>
     <li><button onclick="goTo('work')" id="tab-work">Results</button></li>
-    <li><button onclick="goTo('testimonials')" id="tab-testimonials">What People Say</button></li>
     <li><button onclick="goTo('services')" id="tab-services">Services</button></li>
     <li><button onclick="goTo('contact')" id="tab-contact">Contact</button></li>
   </ul>
   <button class="nav-cta" onclick="goTo('contact')">Work Together →</button>
+  <button class="mob-menu-btn" onclick="openMobMenu()" aria-label="Menu">☰</button>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mob-drawer" id="mob-drawer">
+  <div class="mob-drawer-bg" onclick="closeMobMenu()"></div>
+  <div class="mob-drawer-panel">
+    <button class="mob-drawer-close" onclick="closeMobMenu()">✕</button>
+    <button class="mob-nav-item" onclick="closeMobMenu();goTo('home')">Home</button>
+    <button class="mob-nav-item" onclick="closeMobMenu();goTo('about')">About</button>
+    <button class="mob-nav-item" onclick="closeMobMenu();goTo('method')">Method</button>
+    <button class="mob-nav-item" onclick="closeMobMenu();goTo('work')">Results</button>
+    <button class="mob-nav-item" onclick="closeMobMenu();goTo('services')">Services</button>
+    <button class="mob-nav-item" onclick="closeMobMenu();goTo('contact')">Contact</button>
+  </div>
+</div>
 
 <main>
 
@@ -672,8 +730,8 @@ textarea.form-c{min-height:90px;resize:vertical}
         </svg>
       </div>
       <div class="hero-right-quote">
-        <blockquote>"The businesses that will dominate the next decade aren't the ones with the biggest budgets — they're the ones with the best systems."</blockquote>
-        <cite>— Litsitso Sibolla</cite>
+        <blockquote>"He is not chasing money. He is chasing mastery. I've already started marketing his services to my friends: one day, money will chase him!"</blockquote>
+        <cite>— Adv. Mary Bosiu, Senior Advocate</cite>
         <div class="mini-cards">
           <div class="mini-card" onclick="goTo('about')">
             <div class="mini-card-dot"></div>
@@ -788,10 +846,31 @@ textarea.form-c{min-height:90px;resize:vertical}
         </div>
       </div>
     </div>
+
+    <!-- Testimonials embedded on About page -->
+    <div style="padding:2.5rem 0;border-top:1px solid var(--rule-strong);margin-top:1rem">
+      <div class="s-tag">What people say</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule-strong)">
+        <div class="testi-card dark">
+          <div class="testi-quote">He is not chasing money. He is chasing mastery. I've already started marketing his services to my friends: one day, money will chase him!</div>
+          <div class="testi-divider"></div>
+          <div class="testi-attr">
+            <div class="testi-name">Adv. Mary Bosiu</div>
+            <div class="testi-role">Senior Advocate · Leadership Coach</div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">I worked with Lits'itso on a couple of projects on a tech company and on a financial services business. He was always creative, energetic, and dedicated to mastering each task. He has a truly unique talent which spans from copywriting to audio-visual content creation for digital marketing.</div>
+          <div class="testi-divider"></div>
+          <div class="testi-attr">
+            <div class="testi-name">Vusi Mashinini</div>
+            <div class="testi-role">LLM (Cantab) · International Finance Lawyer</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<!-- ======================== METHOD ======================== -->
 <div class="page" id="pg-method">
   <div class="wrap">
     <div class="phil-hero">
@@ -956,6 +1035,26 @@ textarea.form-c{min-height:90px;resize:vertical}
       <button class="tier-tab active" onclick="switchTier(this,'t-quick')">Quick Start</button>
       <button class="tier-tab" onclick="switchTier(this,'t-retainer')">Monthly</button>
       <button class="tier-tab" onclick="switchTier(this,'t-custom')">Custom</button>
+    </div>
+
+    <!-- Testimonials strip on Services page -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule-strong);margin-bottom:2rem">
+      <div class="testi-card" style="background:var(--cream-deep)">
+        <div class="testi-quote">Our audience grew steadily and consistently. What stood out was that engagement went up alongside the numbers, not just follower counts. The quality of the growth was different.</div>
+        <div class="testi-divider"></div>
+        <div class="testi-attr">
+          <div class="testi-name">Prof. Nqosa Mahao</div>
+          <div class="testi-role">BAP Leader · Public Figure</div>
+        </div>
+      </div>
+      <div class="testi-card dark">
+        <div class="testi-quote">I have worked with Litšitso from our time in College at NULDF, where he showed his digital marketing skills and content creation in a creative manner. He showed daily growth and great marketing skills.</div>
+        <div class="testi-divider"></div>
+        <div class="testi-attr">
+          <div class="testi-name">Tsele Ramoroke</div>
+          <div class="testi-role">Computer Scientist · Application Support, PostBank</div>
+        </div>
+      </div>
     </div>
 
     <!-- QUICK START -->
@@ -1241,7 +1340,7 @@ textarea.form-c{min-height:90px;resize:vertical}
 
     <div class="testi-grid">
       <div class="testi-card dark">
-        <div class="testi-quote">The strategy was clear from day one. We knew exactly what we were doing, why we were doing it, and what each piece of content was meant to achieve. That kind of clarity is rare.</div>
+        <div class="testi-quote">Our audience grew steadily and consistently. What stood out was that engagement went up alongside the numbers, not just follower counts. The quality of the growth was different.</div>
         <div class="testi-divider"></div>
         <div class="testi-attr">
           <div class="testi-name">Prof. Nqosa Mahao</div>
@@ -1249,7 +1348,7 @@ textarea.form-c{min-height:90px;resize:vertical}
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote">He does not just write content. He thinks about what you are trying to build and works backwards from that. Everything we produced had a reason behind it.</div>
+        <div class="testi-quote">He is not chasing money. He is chasing mastery. I've already started marketing his services to my friends: one day, money will chase him!</div>
         <div class="testi-divider"></div>
         <div class="testi-attr">
           <div class="testi-name">Adv. Mary Bosiu</div>
@@ -1257,19 +1356,19 @@ textarea.form-c{min-height:90px;resize:vertical}
         </div>
       </div>
       <div class="testi-card">
-        <div class="testi-quote">Our audience grew steadily and consistently. What stood out was that engagement went up alongside the numbers, not just follower counts. The quality of the growth was different.</div>
+        <div class="testi-quote">I worked with Lits'itso on a couple of projects on a tech company and on a financial services business. He was always creative, energetic, and dedicated to mastering each task and delivering excellent quality work. He brings a unique view to every project and has a great ability to re-imagine an organisation's brand identity and brand communication.</div>
         <div class="testi-divider"></div>
         <div class="testi-attr">
-          <div class="testi-name">LEC Communications Team</div>
-          <div class="testi-role">Lesotho Electricity Company</div>
+          <div class="testi-name">Vusi Mashinini</div>
+          <div class="testi-role">LLM (Cantab) · International Finance Lawyer</div>
         </div>
       </div>
       <div class="testi-card dark">
-        <div class="testi-quote">Starting from zero is daunting. But the positioning work we did early on meant every post had a foundation. People followed because they understood what we stood for.</div>
+        <div class="testi-quote">I have worked with Mr Litšitso Sibolla from our time in College for the National University of Lesotho Dialogue Forum, where he showed his digital marketing skills and content creation in a creative manner. He still showed daily growth and great marketing skills at LesMusic.</div>
         <div class="testi-divider"></div>
         <div class="testi-attr">
-          <div class="testi-name">Kofi Khafetsa</div>
-          <div class="testi-role">Personal Brand · 0 to 7,000 followers</div>
+          <div class="testi-name">Tsele Ramoroke</div>
+          <div class="testi-role">Computer Scientist · Application Support, PostBank</div>
         </div>
       </div>
     </div>
@@ -1553,6 +1652,15 @@ function sendCustomRequest() {
     document.getElementById('cf-service').value = 'Custom project — I\'ll explain below';
     document.getElementById('cf-msg').value = msg;
   }, 400);
+}
+
+function openMobMenu() {
+  document.getElementById('mob-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobMenu() {
+  document.getElementById('mob-drawer').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // ── CONTACT FORM ──

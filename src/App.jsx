@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 // ═══════════════════════════════════════════════════════════════
 // SIBOLLA V5 — CORRECT BRAND PALETTE + HORMOZI FUNNEL ARCHITECTURE
@@ -219,6 +220,7 @@ export default function App(){
           </div>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
